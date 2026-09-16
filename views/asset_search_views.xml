@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_asset_management_asset_search" model="ir.ui.view">
+        <field name="name">asset.management.asset.search</field>
+        <field name="model">asset.management.asset</field>
+        <field name="arch" type="xml">
+            <search string="Search Assets">
+                <field name="name"
+                       filter_domain="['|', '|', ('name', 'ilike', self), ('serial_number', 'ilike', self), ('inventory_number', 'ilike', self)]"
+                       string="Asset"/>
+                <field name="serial_number"/>
+                <field name="inventory_number"/>
+                <field name="asset_type_id"/>
+                <field name="employee_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+
+                <filter string="Available" name="filter_available"
+                        domain="[('state', '=', 'available')]"/>
+                <filter string="Issued" name="filter_issued"
+                        domain="[('state', '=', 'issued')]"/>
+                <filter string="Maintenance" name="filter_maintenance"
+                        domain="[('state', '=', 'maintenance')]"/>
+                <filter string="Retired" name="filter_retired"
+                        domain="[('state', '=', 'retired')]"/>
+                <separator/>
+                <!--
+                    These two filters intentionally compare issue_date to
+                    context_today() directly, rather than filtering on the
+                    stored days_issued field, so they stay correct even
+                    between runs of the daily refresh cron (see
+                    data/ir_cron_data.xml and docs/architecture.md).
+                -->
+                <filter string="Issued &lt; 7 Days" name="filter_issued_lt_7"
+                         domain="[('state', '=', 'issued'),
+                                  ('issue_date', '&gt;=', (context_today() - relativedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Issued &gt; 30 Days" name="filter_issued_gt_30"
+                         domain="[('state', '=', 'issued'),
+                                  ('issue_date', '&lt;=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <filter string="Archived" name="filter_archived" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Equipment Type" name="groupby_type" context="{'group_by': 'asset_type_id'}"/>
+                    <filter string="Status" name="groupby_state" context="{'group_by': 'state'}"/>
+                    <filter string="Current Employee" name="groupby_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Company" name="groupby_company" context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_asset_management_issue_search" model="ir.ui.view">
+        <field name="name">asset.management.issue.search</field>
+        <field name="model">asset.management.issue</field>
+        <field name="arch" type="xml">
+            <search string="Search Issue History">
+                <field name="asset_id"/>
+                <field name="employee_id"/>
+                <field name="asset_type_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+
+                <filter string="Currently Issued" name="filter_active"
+                        domain="[('state', '=', 'issued')]"/>
+                <filter string="Returned" name="filter_returned"
+                        domain="[('state', '=', 'returned')]"/>
+                <separator/>
+                <filter string="Issue Date" name="filter_issue_date" date="issue_date"/>
+                <group expand="1" string="Group By">
+                    <filter string="Asset" name="groupby_asset" context="{'group_by': 'asset_id'}"/>
+                    <filter string="Employee" name="groupby_employee" context="{'group_by': 'employee_id'}"/>
+                    <filter string="Status" name="groupby_state" context="{'group_by': 'state'}"/>
+                    <filter string="Equipment Type" name="groupby_asset_type" context="{'group_by': 'asset_type_id'}"/>
+                    <filter string="Company" name="groupby_company" context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

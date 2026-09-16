@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_asset_management_asset_list" model="ir.ui.view">
+        <field name="name">asset.management.asset.list</field>
+        <field name="model">asset.management.asset</field>
+        <field name="arch" type="xml">
+            <list string="Assets" decoration-muted="state == 'retired'"
+                  decoration-info="state == 'issued'"
+                  decoration-warning="state == 'maintenance'">
+                <field name="name"/>
+                <field name="asset_type_id"/>
+                <field name="serial_number"/>
+                <field name="inventory_number"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'available'"
+                       decoration-info="state == 'issued'"
+                       decoration-warning="state == 'maintenance'"
+                       decoration-muted="state == 'retired'"/>
+                <field name="employee_id"/>
+                <field name="issue_date"/>
+                <field name="days_issued"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_asset_management_asset_form" model="ir.ui.view">
+        <field name="name">asset.management.asset.form</field>
+        <field name="model">asset.management.asset</field>
+        <field name="arch" type="xml">
+            <form string="Asset">
+                <header>
+                    <button name="action_issue" type="object" string="Issue"
+                            class="btn-primary" invisible="state != 'available'"/>
+                    <button name="action_return" type="object" string="Return"
+                            class="btn-primary" invisible="state != 'issued'"
+                            confirm="Confirm return of this asset?"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="available,issued,maintenance,retired"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_issue_history" type="object"
+                                class="oe_stat_button" icon="fa-history">
+                            <field name="issue_history_count" widget="statinfo" string="Issue History"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. MacBook Pro 14"/>
+                        </h1>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="asset_type_id"/>
+                            <field name="serial_number"/>
+                            <field name="inventory_number"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Current Status">
+                            <field name="employee_id" readonly="1"/>
+                            <field name="issue_date" readonly="1"/>
+                            <field name="days_issued" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Additional notes about this asset..."/>
+                    </group>
+                    <notebook>
+                        <page string="Issue History" name="issue_history">
+                            <field name="issue_history_ids" readonly="1">
+                                <list decoration-info="state == 'issued'">
+                                    <field name="employee_id"/>
+                                    <field name="issue_date"/>
+                                    <field name="return_date"/>
+                                    <field name="duration_days"/>
+                                    <field name="state" widget="badge"
+                                           decoration-info="state == 'issued'"
+                                           decoration-success="state == 'returned'"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_asset_management_asset" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">asset.management.asset</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first piece of equipment
+            </p>
+            <p>
+                Laptops, computers, phones, tools and other equipment issued
+                to employees.
+            </p>
+        </field>
+    </record>
+
+</odoo>

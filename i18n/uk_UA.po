@@ -1,0 +1,918 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* asset_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20260513\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-15 14:51+0000\n"
+"PO-Revision-Date: 2026-09-15 14:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: asset_management
+#: model:res.groups,comment:asset_management.group_asset_user
+msgid ""
+"\n"
+"            Can view equipment and its issue history, and issue/return\n"
+"            equipment through the standard workflow buttons. Cannot create\n"
+"            or edit equipment records or types directly.\n"
+"        "
+msgstr ""
+"\n"
+"Можна переглядати обладнання та історію його випусків, а також видавати/повертати\n"
+" обладнання за допомогою стандартних кнопок робочого процесу. Не можна створювати\n"
+" або редагувати записи чи типи обладнання безпосередньо.\n"
+""
+
+#. module: asset_management
+#: model:res.groups,comment:asset_management.group_asset_manager
+msgid ""
+"\n"
+"            Full access: create/edit equipment and equipment types, manage\n"
+"            the issue history, and administer the module.\n"
+"        "
+msgstr ""
+"\n"
+" Повний доступ: створювати/редагувати обладнання та типи обладнання, керувати\n"
+" історією проблем та адмініструвати модуль.\n"
+" "
+
+#. module: asset_management
+#: model:ir.actions.report,print_report_name:asset_management.action_report_asset_issue_act
+msgid "'Asset Issue Act - %s' % (object.asset_id.name)"
+msgstr "'Акт видачі ОЗ - %s' % (object.asset_id.name)"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_kanban
+msgid "<i class=\"fa fa-calendar me-1\" title=\"Issue dates\"/>"
+msgstr "<i class=\"fa fa-calendar me-1\" title=\"Дати випуску\"/>"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_kanban
+msgid "<i class=\"fa fa-user me-1\" title=\"Employee\"/>"
+msgstr "<i class=\"fa fa-user me-1\" title=\"Працівник\"/>"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Asset Management"
+msgstr "Управління активами"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "<strong>Asset Issue Act</strong>"
+msgstr "<strong>Акт видачі ОЗ</strong>"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "<strong>Asset Issue Act №:</strong>"
+msgstr "<strong>Акт видачі ОЗ №:</strong>"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "<strong>Date of issue:</strong>"
+msgstr "<strong>Дата видачі:</strong>"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Page"
+msgstr "Сторінка"
+
+#. module: asset_management
+#: model:ir.model.constraint,message:asset_management.constraint_asset_management_issue_state_return_date_consistency
+msgid "A record still marked as \"Issued\" cannot have a return date."
+msgstr "Запис, який досі позначено як \"Видано\", не може мати дату повернення."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_needaction
+msgid "Action Needed"
+msgstr "Необхідні дії"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__active
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__active
+msgid "Active"
+msgstr "Активний"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_ids
+msgid "Activities"
+msgstr "Заходи"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Декорація винятку активності"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_state
+msgid "Activity State"
+msgstr "Стан активності"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Значок типу активності"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Additional notes about this asset..."
+msgstr "Додаткові примітки щодо цього ресурсу..."
+
+#. module: asset_management
+#: model:ir.model.constraint,message:asset_management.constraint_asset_management_asset_issue_consistency_check
+msgid ""
+"An asset can only have a current employee and issue date while its status is"
+" \"Issued\"."
+msgstr ""
+"Актив може мати поточного співробітника та дату видачі лише тоді, коли його статус "
+" \"Видано\"."
+
+#. module: asset_management
+#: model:ir.model.constraint,message:asset_management.constraint_asset_management_asset_type_code_uniq
+msgid "An equipment type with this code already exists."
+msgstr "Тип обладнання з цим кодом вже існує."
+
+#. module: asset_management
+#: model:ir.model.constraint,message:asset_management.constraint_asset_management_asset_type_name_uniq
+msgid "An equipment type with this name already exists."
+msgstr "Тип обладнання з такою назвою вже існує."
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_type_form
+msgid "Archived"
+msgstr "Архівовано"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__asset_id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__asset_id
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Asset"
+msgstr "Актив"
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset_issue.py:0
+msgid ""
+"Asset \"%s\" already has an active (unreturned) issue record. It must be "
+"returned before it can be issued again."
+msgstr ""
+"Актив \"%s\" вже має активний (неповернений) запис про видачу."
+" Його необхідно повернути, перш ніж його можна буде видати знову."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+msgid ""
+"Asset \"%s\" has a current employee/issue date but its status is not "
+"\"Issued\". Use the \"Return\" button instead of editing these fields "
+"directly."
+msgstr ""
+"Актив \"%s\" має поточну дату співробітника/видачі, але його статус не "
+"\"Видано\". Скористайтеся кнопкою \"Повернутися\" замість того, щоб редагувати ці поля "
+"безпосередньо."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+msgid ""
+"Asset \"%s\" is marked as Issued but has no employee or issue date. Use the "
+"\"Issue\" button instead of editing these fields directly."
+msgstr ""
+"Актив \"%s\" позначено як Виданий, але не має співробітника чи дати видачі."
+"Скористайтеся кнопкою \"Видача\" замість безпосереднього редагування цих полів."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__asset_count
+msgid "Asset Count"
+msgstr "Кількість активів"
+
+#. module: asset_management
+#: model:ir.actions.report,name:asset_management.action_report_asset_issue_act
+msgid "Asset Issue Act"
+msgstr "Акт видачі ОЗ"
+
+#. module: asset_management
+#: model:ir.model,name:asset_management.model_asset_management_issue
+msgid "Asset Issue History"
+msgstr "Історія проблем з активами"
+
+#. module: asset_management
+#: model:ir.module.category,name:asset_management.module_category_asset_management
+#: model:ir.ui.menu,name:asset_management.menu_asset_management_root
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Asset Management"
+msgstr "Управління активами"
+
+#. module: asset_management
+#: model:ir.actions.server,name:asset_management._cron_refresh_date_dependent_fields_ir_actions_server
+msgid "Asset Management: refresh days issued"
+msgstr "Управління активами: випущено дні оновлення"
+
+#. module: asset_management
+#: model:res.groups,name:asset_management.group_asset_manager
+msgid "Asset Manager"
+msgstr "Керуючий активами"
+
+#. module: asset_management
+#: model:res.groups,name:asset_management.group_asset_user
+msgid "Asset User"
+msgstr "Користувач активу"
+
+#. module: asset_management
+#: model:ir.actions.act_window,name:asset_management.action_asset_management_asset
+#: model:ir.ui.menu,name:asset_management.menu_asset_management_asset
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_list
+msgid "Assets"
+msgstr "Активи"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість вкладень"
+
+#. module: asset_management
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_asset__state__available
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Available"
+msgstr "Доступно"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Basic Information"
+msgstr "Основна інформація"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_wizard_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__code
+msgid "Code"
+msgstr "Код"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__company_id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__company_id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__company_id
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Company"
+msgstr "Компанія"
+
+#. module: asset_management
+#: model:ir.model,name:asset_management.model_asset_management_asset
+msgid "Company Asset / Equipment"
+msgstr "Активи / Обладнання компанії"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Company Logo"
+msgstr "Логотип компанії"
+
+#. module: asset_management
+#: model:ir.module.category,description:asset_management.module_category_asset_management
+msgid "Company equipment issue tracking"
+msgstr "Відстеження проблем з обладнанням компанії"
+
+#. module: asset_management
+#: model:ir.ui.menu,name:asset_management.menu_asset_management_configuration
+msgid "Configuration"
+msgstr "Конфігурація"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_wizard_form
+msgid "Confirm Issue"
+msgstr "Підтвердити видачу активу"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Confirm return of this asset?"
+msgstr "Підтвердити повернення цього активу? "
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_asset_type
+msgid "Create your first equipment type"
+msgstr "Створіть свій перший тип обладнання"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__create_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__create_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__create_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__create_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__create_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__create_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__create_date
+msgid "Created on"
+msgstr "Створено"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__employee_id
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Current Employee"
+msgstr "Поточний працівник"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__issue_date
+msgid "Current Issue Date"
+msgstr "Поточна дата випуску"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Current Status"
+msgstr "Поточний стан"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Currently Issued"
+msgstr "Видано на даний момент"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__days_issued
+msgid "Days Issued"
+msgstr "Видано днів"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_issue__duration_days
+msgid ""
+"Days between issue date and return date (or today, while still issued)."
+msgstr ""
+"Дні між датою видачі та датою повернення (або сьогодні, поки ще видано)."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__description
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__description
+msgid "Description"
+msgstr "Опис"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__display_name
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__display_name
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__display_name
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__display_name
+msgid "Display Name"
+msgstr "Відображуване ім'я"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__duration_days
+msgid "Duration (days)"
+msgstr "Тривалість (дні)"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__employee_id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__employee_id
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Employee"
+msgstr "Працівник"
+
+#. module: asset_management
+#: model:ir.model,name:asset_management.model_asset_management_asset_type
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__asset_type_id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__asset_type_id
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_type_form
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Equipment Type"
+msgstr "Тип обладнання"
+
+#. module: asset_management
+#: model:ir.actions.act_window,name:asset_management.action_asset_management_asset_type
+#: model:ir.ui.menu,name:asset_management.menu_asset_management_asset_type
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_type_list
+msgid "Equipment Types"
+msgstr "Типи обладнання"
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_asset_type
+msgid ""
+"Equipment types (Laptop, Monitor, Phone, Tool, ...) are used\n"
+"                to categorize assets."
+msgstr ""
+"Типи обладнання (ноутбук, монітор, телефон, інструмент тощо) використовуються\n"
+"для категоризації активів."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (Партнери)"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Значок шрифту awesome, наприклад, fa-tasks"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Group By"
+msgstr "Групувати за"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__has_message
+msgid "Has Message"
+msgstr "Має повідомлення"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__id
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__id
+msgid "ID"
+msgstr "Ідентифікатор"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_exception_icon
+msgid "Icon"
+msgstr "Значок"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Піктограма для позначення виняткової дії."
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, нові повідомлення потребують вашої уваги."
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__message_has_error
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо позначено, деякі повідомлення містять помилку доставки."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__inventory_number
+msgid "Inventory Number"
+msgstr "Інвентарний номер"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_is_follower
+msgid "Is Follower"
+msgstr "Підписник"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Issue"
+msgstr "Видати"
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_wizard_form
+msgid "Issue Asset"
+msgstr "Випуск активу"
+
+#. module: asset_management
+#: model:ir.model,name:asset_management.model_asset_management_issue_wizard
+msgid "Issue Asset Wizard"
+msgstr "Майстер випуску активів"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__issue_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__issue_date
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Issue Date"
+msgstr "Дата випуску"
+
+#. module: asset_management
+#: model:ir.actions.act_window,name:asset_management.action_asset_management_issue
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__issue_history_ids
+#: model:ir.ui.menu,name:asset_management.menu_asset_management_issue
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_form
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_list
+msgid "Issue History"
+msgstr "Історія видачі"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__issue_history_count
+msgid "Issue History Count"
+msgstr "Кількість проблем у історії"
+
+#. module: asset_management
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_asset__state__issued
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_issue__state__issued
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Issued"
+msgstr "Видано"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Issued < 7 Days"
+msgstr "Видано < 7 днів"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Issued > 30 Days"
+msgstr "Видано < 30 днів"
+
+#. module: asset_management
+#: model:asset.management.asset.type,name:asset_management.demo_asset_type_laptop
+msgid "Laptop"
+msgstr "Ноутбук"
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_asset
+msgid ""
+"Laptops, computers, phones, tools and other equipment issued\n"
+"                to employees."
+msgstr ""
+"Ноутбуки, комп'ютери, телефони, інструменти та інше обладнання видано співробітникам."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__write_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__write_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__write_uid
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Останнє оновлення"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__write_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__write_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__write_date
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__write_date
+msgid "Last Updated on"
+msgstr "Останнє оновлення"
+
+#. module: asset_management
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_asset__state__maintenance
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Maintenance"
+msgstr "Технічне обслуговування"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставки повідомлення"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: asset_management
+#: model:asset.management.asset.type,name:asset_management.demo_asset_type_monitor
+msgid "Monitor"
+msgstr "Монітор"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Кінцевий термін моєї активності"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__name
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset_type__name
+msgid "Name"
+msgstr "Обладнання"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Кінцевий термін наступної активності"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_summary
+msgid "Next Activity Summary"
+msgstr "Підсумок наступної дії"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_type_id
+msgid "Next Activity Type"
+msgstr "Наступний тип активності"
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+msgid ""
+"No active issue record was found for asset \"%s\". Please contact your "
+"administrator."
+msgstr ""
+"Для активного ресурсу \"%s\" не знайдено жодного активного запису про проблему. Зверніться до свого адміністратора."
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_issue
+msgid "No issue records yet"
+msgstr "Поки що немає записів про проблеми"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__notes
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__notes
+msgid "Notes"
+msgstr "Нотатки"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__days_issued
+msgid ""
+"Number of days since the current issue date. Zero when the asset is not "
+"currently issued."
+msgstr ""
+"Кількість днів з поточної дати випуску. Нуль, якщо актив не "
+"випущено наразі."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Кількість повідомлень, що потребують дій"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилкою доставки"
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+msgid "Only assets in \"Available\" status can be issued. \"%s\" is currently \"%s\"."
+msgstr "Можна видати лише активи зі статусом \"Доступно\". \"%s\" наразі має статус \"%s\"."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset.py:0
+msgid "Only assets in \"Issued\" status can be returned. \"%s\" is currently \"%s\"."
+msgstr "Повернути можна лише активи зі статусом \"Видано\". \"%s\" наразі має статус \"%s\"."
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_wizard_form
+msgid "Optional notes about this issue..."
+msgstr "Додаткові нотатки щодо цієї проблеми..."
+
+#. module: asset_management
+#: model:asset.management.asset.type,name:asset_management.demo_asset_type_phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_asset
+msgid "Register your first piece of equipment"
+msgstr "Зареєструйте своє перше обладнання"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__activity_user_id
+msgid "Responsible User"
+msgstr "Відповідальний користувач"
+
+#. module: asset_management
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_asset__state__retired
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Retired"
+msgstr "На пенсії"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "Return"
+msgstr "Повернути"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__return_date
+msgid "Return Date"
+msgstr "Дата повернення"
+
+#. module: asset_management
+#: model:ir.model.fields.selection,name:asset_management.selection__asset_management_issue__state__returned
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Returned"
+msgstr "Повернуто"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставки SMS"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+msgid "Search Assets"
+msgstr "Пошук ресурсів"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Search Issue History"
+msgstr "Історія проблем пошуку"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_wizard_form
+msgid "Select the employee receiving this asset..."
+msgstr "Виберіть працівника, який отримає цей актив..."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__serial_number
+msgid "Serial Number"
+msgstr "Серійний номер"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset_type__code
+msgid "Short internal code, e.g. LAPTOP, PHONE, TOOL."
+msgstr "Короткий внутрішній код, наприклад, НОУТБУК, ТЕЛЕФОН, ІНСТРУМЕНТ."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue__state
+msgid "State"
+msgstr "Стан"
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__state
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_issue_wizard__asset_state
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_search
+msgid "Status"
+msgstr "Статус"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Стан на основі дій\n"
+"Прострочено: Термін виконання вже минув\n"
+"Сьогодні: Дата дії – сьогодні\n"
+"Заплановано: Майбутні дії."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/wizard/asset_issue_wizard.py:0
+msgid "The issue date cannot be in the future."
+msgstr "Дата видачі не може бути в майбутньому."
+
+#. module: asset_management
+#: model:ir.model.constraint,message:asset_management.constraint_asset_management_issue_return_date_after_issue_date
+msgid "The return date cannot be earlier than the issue date."
+msgstr "Дата повернення не може бути раніше дати видачі."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/models/asset_issue.py:0
+msgid ""
+"This asset already has an active issue record. It must be returned before it"
+" can be issued again."
+msgstr ""
+"Цей актив вже має активний запис про випуск. Його необхідно повернути, перш ніж його можна буде випустити знову."
+
+#. module: asset_management
+#. odoo-python
+#: code:addons/asset_management/wizard/asset_issue_wizard.py:0
+msgid ""
+"This asset is no longer available - it may have just been issued by someone "
+"else. Please refresh and try again."
+msgstr ""
+"Цей ресурс більше недоступний — можливо, його щойно видав хтось інший. Будь ласка, оновіть сторінку та спробуйте ще раз."
+
+#. module: asset_management
+#: model:asset.management.asset.type,name:asset_management.demo_asset_type_tool
+msgid "Tool"
+msgstr "Інструмент"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Тип записаної дії-винятку."
+
+#. module: asset_management
+#: model_terms:ir.actions.act_window,help:asset_management.action_asset_management_issue
+msgid ""
+"Use the \"Issue\" button on an asset to create the first\n"
+"                record here."
+msgstr ""
+"Використайте кнопку \"Проблема\" на активі, щоб створити тут перший запис."
+
+#. module: asset_management
+#: model:ir.model.fields,field_description:asset_management.field_asset_management_asset__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення веб-сайту"
+
+#. module: asset_management
+#: model:ir.model.fields,help:asset_management.field_asset_management_asset__website_message_ids
+msgid "Website communication history"
+msgstr "Історія спілкування на вебсайті"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_issue_kanban
+msgid "d."
+msgstr ""
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
+msgid "e.g. MacBook Pro 14"
+msgstr ""
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Inventory number"
+msgstr "Інвентарний номер"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Certificate of issue of fixed assets"
+msgstr "Акт видачі основного засобу"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Department"
+msgstr "Відділ"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Responsible person"
+msgstr "Відповідальна особа"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Date of issue:"
+msgstr "Дата видачі:"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Return date"
+msgstr "Дата повернення"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Document for transferring equipment to an employee"
+msgstr "Документ передачі обладнання працівнику"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Name"
+msgstr "Найменування"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Equipment"
+msgstr "Обладнання"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid ""
+"The equipment specified in this act has been transferred to the employee for the performance of official duties. The employee confirms receipt of the equipment and assumes responsibility for its proper use and storage."
+
+msgstr ""
+"Обладнання, зазначене в цьому акті, передано працівнику для виконання службових обов’язків. Працівник підтверджує отримання обладнання та бере на себе відповідальність за його належне використання та зберігання»."
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Full name"
+msgstr "ПІБ"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Position"
+msgstr "Посада"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Employee"
+msgstr "Працівник"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Notes"
+msgstr "Примітки"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Signature"
+msgstr "Підпис"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Serial number"
+msgstr "Серійний номер"
+
+#. module: asset_management
+#: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
+msgid "Equipment type"
+msgstr "Тип обладнання"

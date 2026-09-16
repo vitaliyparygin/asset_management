@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_asset_management_asset_type_list" model="ir.ui.view">
+        <field name="name">asset.management.asset.type.list</field>
+        <field name="model">asset.management.asset.type</field>
+        <field name="arch" type="xml">
+            <list string="Equipment Types" editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="asset_count"/>
+                <field name="active" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_asset_management_asset_type_form" model="ir.ui.view">
+        <field name="name">asset.management.asset.type.form</field>
+        <field name="model">asset.management.asset.type</field>
+        <field name="arch" type="xml">
+            <form string="Equipment Type">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active" invisible="1"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_asset_management_asset_type" model="ir.actions.act_window">
+        <field name="name">Equipment Types</field>
+        <field name="res_model">asset.management.asset.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first equipment type
+            </p>
+            <p>
+                Equipment types (Laptop, Monitor, Phone, Tool, ...) are used
+                to categorize assets.
+            </p>
+        </field>
+    </record>
+
+</odoo>

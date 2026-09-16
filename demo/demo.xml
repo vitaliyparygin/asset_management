@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- Equipment types -->
+    <record id="demo_asset_type_laptop" model="asset.management.asset.type">
+        <field name="name">Laptop</field>
+        <field name="code">LAPTOP</field>
+    </record>
+    <record id="demo_asset_type_monitor" model="asset.management.asset.type">
+        <field name="name">Monitor</field>
+        <field name="code">MONITOR</field>
+    </record>
+    <record id="demo_asset_type_tool" model="asset.management.asset.type">
+        <field name="name">Tool</field>
+        <field name="code">TOOL</field>
+    </record>
+    <record id="demo_asset_type_phone" model="asset.management.asset.type">
+        <field name="name">Phone</field>
+        <field name="code">PHONE</field>
+    </record>
+
+    <!-- A dedicated demo employee, so this demo data does not depend on
+         employee records created by other modules' demo data. -->
+    <record id="demo_employee_asset_management" model="hr.employee">
+        <field name="name">Demo Employee (Asset Mgmt)</field>
+    </record>
+
+    <!-- Assets -->
+    <record id="demo_asset_macbook_1" model="asset.management.asset">
+        <field name="name">MacBook Pro 14 #1</field>
+        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+        <field name="serial_number">MBP14-0001</field>
+        <field name="inventory_number">INV-1001</field>
+    </record>
+    <record id="demo_asset_macbook_2" model="asset.management.asset">
+        <field name="name">MacBook Pro 14 #2</field>
+        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+        <field name="serial_number">MBP14-0002</field>
+        <field name="inventory_number">INV-1002</field>
+    </record>
+    <record id="demo_asset_monitor_1" model="asset.management.asset">
+        <field name="name">Dell UltraSharp 27"</field>
+        <field name="asset_type_id" ref="demo_asset_type_monitor"/>
+        <field name="serial_number">DELL-U27-0001</field>
+        <field name="inventory_number">INV-2001</field>
+    </record>
+    <record id="demo_asset_drill" model="asset.management.asset">
+        <field name="name">Bosch Drill GSR</field>
+        <field name="asset_type_id" ref="demo_asset_type_tool"/>
+        <field name="serial_number">BOSCH-GSR-0001</field>
+        <field name="inventory_number">INV-3001</field>
+    </record>
+    <record id="demo_asset_iphone" model="asset.management.asset">
+        <field name="name">iPhone 15</field>
+        <field name="asset_type_id" ref="demo_asset_type_phone"/>
+        <field name="serial_number">IPH15-0001</field>
+        <field name="inventory_number">INV-4001</field>
+    </record>
+
+    <!--
+        Sample issue: MacBook Pro 14 #1 has been issued to the demo employee
+        for the last 10 days. The issue record and the asset's current-state
+        fields are created/updated directly (not through the wizard, which
+        is a UI-only convenience) - each individual <record> tag still sets
+        employee_id/issue_date/state together so the CHECK constraint on
+        asset.management.asset is always satisfied.
+    -->
+    <record id="demo_issue_macbook_1" model="asset.management.issue">
+        <field name="asset_id" ref="demo_asset_macbook_1"/>
+        <field name="employee_id" ref="demo_employee_asset_management"/>
+        <field name="issue_date" eval="(datetime.now() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="state">issued</field>
+        <field name="notes">Demo issue record.</field>
+    </record>
+    <record id="demo_asset_macbook_1" model="asset.management.asset">
+        <field name="employee_id" ref="demo_employee_asset_management"/>
+        <field name="issue_date" eval="(datetime.now() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
+        <field name="state">issued</field>
+    </record>
+    <record id="asset_demo_laptop_maintenance_1" model="asset.management.asset">
+        <field name="name">Maintenance Laptop 01</field>
+        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+        <field name="serial_number">DEMO-MAINT-001</field>
+        <field name="inventory_number">INV-MAINT-001</field>
+        <field name="state">maintenance</field>
+        <field name="description">
+            Demo asset currently under maintenance.
+        </field>
+    </record>
+
+    <record id="asset_demo_laptop_maintenance_2" model="asset.management.asset">
+        <field name="name">Maintenance Laptop 02</field>
+        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+        <field name="serial_number">DEMO-MAINT-002</field>
+        <field name="inventory_number">INV-MAINT-002</field>
+        <field name="state">maintenance</field>
+        <field name="description">
+            Demo asset currently under maintenance.
+        </field>
+    </record>
+
+    <record id="employee_demo_doris" model="hr.employee">
+        <field name="name">Doris Demo</field>
+    </record>
+
+    <record id="asset_demo_active_laptop" model="asset.management.asset">
+        <field name="name">Demo MacBook Pro</field>
+        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+        <field name="serial_number">DEMO-MBP-001</field>
+        <field name="inventory_number">DEMO-001</field>
+        <field name="state">issued</field>
+        <field name="employee_id" ref="employee_demo_doris"/>
+        <field name="issue_date">2026-09-10</field>
+    </record>
+
+    <record id="asset_issue_demo_active_laptop" model="asset.management.issue">
+        <field name="asset_id" ref="asset_demo_active_laptop"/>
+        <field name="employee_id" ref="employee_demo_doris"/>
+        <field name="issue_date">2026-09-10</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="state">issued</field>
+        <field name="notes">
+            Active demo issue used to demonstrate duration_days and days_issued.
+        </field>
+    </record>
+
+    <record id="asset_demo_returned_monitor" model="asset.management.asset">
+        <field name="name">Demo Dell UltraSharp 27</field>
+        <field name="asset_type_id" ref="demo_asset_type_monitor"/>
+        <field name="serial_number">DEMO-MON-001</field>
+        <field name="inventory_number">DEMO-002</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="state">available</field>
+    </record>
+
+    <record id="asset_issue_demo_returned_monitor" model="asset.management.issue">
+        <field name="asset_id" ref="asset_demo_returned_monitor"/>
+        <field name="employee_id" ref="employee_demo_doris"/>
+        <field name="issue_date">2026-09-01</field>
+        <field name="return_date">2026-09-05</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="state">returned</field>
+        <field name="notes">
+            Returned demo issue used to demonstrate fixed duration_days.
+        </field>
+    </record>
+
+
+</odoo>

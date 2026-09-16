@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_management_asset_type_user,asset.management.asset.type.user,model_asset_management_asset_type,group_asset_user,1,0,0,0
+access_asset_management_asset_type_manager,asset.management.asset.type.manager,model_asset_management_asset_type,group_asset_manager,1,1,1,1
+access_asset_management_asset_user,asset.management.asset.user,model_asset_management_asset,group_asset_user,1,0,0,0
+access_asset_management_asset_manager,asset.management.asset.manager,model_asset_management_asset,group_asset_manager,1,1,1,1
+access_asset_management_issue_user,asset.management.issue.user,model_asset_management_issue,group_asset_user,1,1,1,0
+access_asset_management_issue_manager,asset.management.issue.manager,model_asset_management_issue,group_asset_manager,1,1,1,1
+access_asset_management_issue_wizard_user,asset.management.issue.wizard.user,model_asset_management_issue_wizard,group_asset_user,1,1,1,1
+access_asset_management_issue_wizard_manager,asset.management.issue.wizard.manager,model_asset_management_issue_wizard,group_asset_manager,1,1,1,1

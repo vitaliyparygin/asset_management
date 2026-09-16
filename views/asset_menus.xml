@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_asset_management_root"
+              name="Asset Management"
+              sequence="60"
+              groups="asset_management.group_asset_user,asset_management.group_asset_manager"/>
+
+    <menuitem id="menu_asset_management_asset"
+              name="Assets"
+              parent="menu_asset_management_root"
+              action="action_asset_management_asset"
+              sequence="10"/>
+
+    <menuitem id="menu_asset_management_issue"
+              name="Issue History"
+              parent="menu_asset_management_root"
+              action="action_asset_management_issue"
+              sequence="20"/>
+
+    <menuitem id="menu_asset_management_configuration"
+              name="Configuration"
+              parent="menu_asset_management_root"
+              groups="asset_management.group_asset_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_asset_management_asset_type"
+              name="Equipment Types"
+              parent="menu_asset_management_configuration"
+              action="action_asset_management_asset_type"
+              sequence="10"/>
+
+</odoo>

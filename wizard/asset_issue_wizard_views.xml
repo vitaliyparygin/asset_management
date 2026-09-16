@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_asset_management_issue_wizard_form" model="ir.ui.view">
+        <field name="name">asset.management.issue.wizard.form</field>
+        <field name="model">asset.management.issue.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Issue Asset">
+                <field name="asset_state" invisible="1"/>
+                <group>
+                    <field name="asset_id" readonly="1"/>
+                    <field name="company_id" invisible="1"/>
+                    <field name="employee_id"
+                           domain="[('company_id', '=', company_id)]"
+                           placeholder="Select the employee receiving this asset..."/>
+                    <field name="issue_date"/>
+                </group>
+                <group>
+                    <field name="notes" placeholder="Optional notes about this issue..."/>
+                </group>
+                <footer>
+                    <button name="action_confirm" type="object"
+                            string="Confirm Issue" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

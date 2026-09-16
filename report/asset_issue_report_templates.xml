@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+
+<template id="report_asset_issue_act_document">
+    <t t-call="web.html_container">
+
+        <t t-foreach="docs" t-as="o">
+
+            <t t-call="web.external_layout">
+
+                <div class="page"
+                     style="font-family: 'DejaVu Sans', sans-serif;
+                            font-size: 12px;
+                            color: #222;">
+
+                    <!-- Explicit UTF-8 declaration for PDF rendering -->
+                    <meta charset="UTF-8"/>
+
+                    <!-- Company header -->
+                    <table style="width: 100%;
+                                  border-collapse: collapse;
+                                  margin-bottom: 25px;">
+                        <tr>
+                            <td style="width: 35%;
+                                       vertical-align: top;
+                                       border: 0;">
+
+                                <img src="data:image/png;base64,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"
+                                 style="max-width: 180px; max-height: 70px;"
+                                 alt="Company Logo"/>
+
+                            </td>
+
+                            <td style="width: 65%;
+                                       vertical-align: top;
+                                       text-align: right;
+                                       border: 0;">
+
+                                <div style="font-size: 18px;
+                                            font-weight: bold;">
+                                    <span t-field="o.company_id.name"/>
+                                </div>
+
+                                <div style="font-size: 11px;
+                                            color: #666;
+                                            margin-top: 5px;">
+                                    Asset Management
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Document title -->
+                    <div style="text-align: center;
+                                margin-top: 20px;
+                                margin-bottom: 25px;">
+
+                        <div style="font-size: 20px;
+                                    font-weight: bold;">
+                            Certificate of issue of fixed assets
+                        </div>
+
+                        <div style="font-size: 12px;
+                                    color: #666;
+                                    margin-top: 6px;">
+                            Document for transferring equipment to an employee
+                        </div>
+
+                    </div>
+
+                    <!-- Document information -->
+                    <table style="width: 100%;
+                                  border-collapse: collapse;
+                                  margin-bottom: 25px;">
+
+                        <tr>
+                            <td style="width: 50%;
+                                       padding: 5px 0;
+                                       border: 0;">
+
+                                <strong>Asset Issue Act №:</strong>
+                                <span t-esc="o.id"/>
+
+                            </td>
+
+                            <td style="width: 50%;
+                                       padding: 5px 0;
+                                       text-align: right;
+                                       border: 0;">
+
+                                <strong>Date of issue:</strong>
+                                <span t-field="o.issue_date"/>
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <!-- Employee -->
+                    <div style="background: #f2f2f2;
+                                border: 1px solid #ccc;
+                                padding: 8px 10px;
+                                font-size: 14px;
+                                font-weight: bold;">
+                        Employee
+                    </div>
+
+                    <table style="width: 100%;
+                                  border-collapse: collapse;
+                                  margin-bottom: 22px;">
+
+                        <tbody>
+
+                            <tr>
+                                <td style="width: 35%;
+                                           padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Full name
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.employee_id.name"/>
+                                </td>
+                            </tr>
+
+                            <tr t-if="o.employee_id.job_title">
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Position
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.employee_id.job_title"/>
+                                </td>
+                            </tr>
+
+                            <tr t-if="o.employee_id.department_id">
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Відділ
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.employee_id.department_id.name"/>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <!-- Equipment -->
+                    <div style="background: #f2f2f2;
+                                border: 1px solid #ccc;
+                                padding: 8px 10px;
+                                font-size: 14px;
+                                font-weight: bold;">
+                        Equipment
+                    </div>
+
+                    <table style="width: 100%;
+                                  border-collapse: collapse;
+                                  margin-bottom: 22px;">
+
+                        <tbody>
+
+                            <tr>
+                                <td style="width: 35%;
+                                           padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Name
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.asset_id.name"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Equipment type
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.asset_type_id.name"/>
+                                </td>
+                            </tr>
+
+                            <tr t-if="o.asset_id.serial_number">
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Serial number
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.asset_id.serial_number"/>
+                                </td>
+                            </tr>
+
+                            <tr t-if="o.asset_id.inventory_number">
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Inventory number
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.asset_id.inventory_number"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Date of issue
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.issue_date"/>
+                                </td>
+                            </tr>
+
+                            <tr t-if="o.return_date">
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;
+                                           font-weight: bold;">
+                                    Return date
+                                </td>
+
+                                <td style="padding: 8px 10px;
+                                           border: 1px solid #ccc;">
+                                    <span t-field="o.return_date"/>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <!-- Notes -->
+                    <div t-if="o.notes"
+                         style="margin-bottom: 25px;">
+
+                        <div style="background: #f2f2f2;
+                                    border: 1px solid #ccc;
+                                    padding: 8px 10px;
+                                    font-size: 14px;
+                                    font-weight: bold;">
+                            Notes
+                        </div>
+
+                        <div style="border: 1px solid #ccc;
+                                    border-top: 0;
+                                    padding: 10px;
+                                    min-height: 40px;">
+                            <span t-field="o.notes"/>
+                        </div>
+
+                    </div>
+
+                    <!-- Responsibility statement -->
+                    <div style="margin-top: 25px;
+                                margin-bottom: 40px;
+                                line-height: 1.6;
+                                text-align: justify;">
+
+                        <p>
+                            The equipment specified in this act has been transferred to the employee for the performance of official duties. The employee confirms receipt of the equipment and assumes responsibility for its proper use and storage.
+                        </p>
+
+                    </div>
+
+                    <!-- Signatures -->
+                    <table style="width: 100%;
+                                  border-collapse: collapse;
+                                  margin-top: 45px;">
+
+                        <tr>
+
+                            <td style="width: 50%;
+                                       padding-right: 30px;
+                                       border: 0;
+                                       vertical-align: top;">
+
+                                <div style="font-weight: bold;
+                                            margin-bottom: 30px;">
+                                    Employee
+                                </div>
+
+                                <div style="height: 25px;
+                                            border-bottom: 1px solid #333;">
+                                </div>
+
+                                <div style="font-size: 10px;
+                                            color: #777;
+                                            margin-top: 5px;">
+                                    Signature
+                                </div>
+
+                                <div style="margin-top: 12px;">
+                                    <span t-field="o.employee_id.name"/>
+                                </div>
+
+                            </td>
+
+                            <td style="width: 50%;
+                                       padding-left: 30px;
+                                       border: 0;
+                                       vertical-align: top;">
+
+                                <div style="font-weight: bold;
+                                            margin-bottom: 30px;">
+                                    Responsible person
+                                </div>
+
+                                <div style="height: 25px;
+                                            border-bottom: 1px solid #333;">
+                                </div>
+
+                                <div style="font-size: 10px;
+                                            color: #777;
+                                            margin-top: 5px;">
+                                    Signature
+                                </div>
+
+                                <div style="margin-top: 12px;">
+                                    &#160;
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                    <!-- Footer -->
+                    <div style="margin-top: 45px;
+                                padding-top: 8px;
+                                border-top: 1px solid #ccc;
+                                font-size: 9px;
+                                color: #777;
+                                text-align: center;">
+
+                        <span t-field="o.company_id.name"/>
+                        <span> — Asset Management</span>
+
+                    </div>
+
+                </div>
+
+            </t>
+
+        </t>
+
+    </t>
+</template>
+
+
+</odoo>

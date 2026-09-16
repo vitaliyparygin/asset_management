@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_asset_issue_act" model="ir.actions.report">
+        <field name="name">Asset Issue Act</field>
+        <field name="model">asset.management.issue</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">asset_management.report_asset_issue_act_document</field>
+        <field name="report_file">asset_management.report_asset_issue_act_document</field>
+        <field name="binding_model_id" ref="model_asset_management_issue"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Asset Issue Act - %s' % (object.asset_id.name)</field>
+    </record>
+</odoo>
