@@ -35,13 +35,6 @@ class AssetManagementIssueWizard(models.TransientModel):
         self.ensure_one()
         asset = self.asset_id
 
-        # Lock the asset row for the rest of this transaction so that two
-        # concurrent "Issue" requests for the same asset are serialized:
-        # the second request blocks here until the first one commits (or
-        # rolls back), after which it re-reads a fresh, up-to-date state.
-        # This is the standard PostgreSQL/Odoo pattern for this kind of
-        # race condition; it complements (and does not replace) the
-        # partial unique index on asset.management.issue.
         self.env.cr.execute(
             'SELECT id, state FROM asset_management_asset WHERE id = %s FOR UPDATE',
             (asset.id,),
@@ -61,10 +54,7 @@ class AssetManagementIssueWizard(models.TransientModel):
             'notes': self.notes,
             'state': 'issued',
         }
-        # See asset.action_return() for why sudo() is used here: Asset
-        # Users only get read access to asset.management.asset directly,
-        # and create/write access to asset.management.issue is limited to
-        # what this sanctioned wizard needs.
+
         self.env['asset.management.issue'].sudo().create(issue_vals)
         asset.sudo().write({
             'employee_id': self.employee_id.id,

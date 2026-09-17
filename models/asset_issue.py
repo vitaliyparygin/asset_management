@@ -134,24 +134,6 @@ class AssetManagementIssue(models.Model):
                     _('This asset is already issued to an employee.')
                 )
 
-    @api.constrains('name', 'code')
-    def _check_unique_name_code(self):
-        for record in self:
-            if self.search([
-                ('id', '!=', record.id),
-                ('name', '=', record.name),
-            ], limit=1):
-                raise ValidationError(
-                    'Asset type name must be unique.'
-                )
-
-            if self.search([
-                ('id', '!=', record.id),
-                ('code', '=', record.code),
-            ], limit=1):
-                raise ValidationError(
-                    'Asset type code must be unique.'
-                )
 
     def init(self):
         """Create a partial unique index guaranteeing, at the database

@@ -61,17 +61,21 @@ Maintenance and Retired are separate from the normal issue/return process.
 
 ## Maintenance
 
-Maintenance is only a status at the moment.
+The `Maintenance` status means that the asset is temporarily unavailable
+for issue to an employee.
 
-The module does not have a separate maintenance system for:
+An asset in `Maintenance`:
 
-* repair orders;
-* repair history;
-* costs;
-* vendors;
-* maintenance dates.
+- cannot be issued;
+- has no current employee;
+- has no current issue date;
+- does not have an active issue record.
 
-This can be added later if needed.
+After maintenance is completed, an Asset Manager can change the asset
+status back to `Available`. The asset can then be issued to an employee.
+
+See the [Asset Statuses and Workflow](../docs/asset-statuses.md) documentation
+for the complete lifecycle and transition rules.
 
 ## Permissions
 

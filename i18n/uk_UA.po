@@ -688,7 +688,7 @@ msgstr "Відповідальний користувач"
 #: model:ir.model.fields.selection,name:asset_management.selection__asset_management_asset__state__retired
 #: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_search
 msgid "Retired"
-msgstr "На пенсії"
+msgstr "Списано"
 
 #. module: asset_management
 #: model_terms:ir.ui.view,arch_db:asset_management.view_asset_management_asset_form
@@ -916,3 +916,4 @@ msgstr "Серійний номер"
 #: model_terms:ir.ui.view,arch_db:asset_management.report_asset_issue_act_document
 msgid "Equipment type"
 msgstr "Тип обладнання"
+

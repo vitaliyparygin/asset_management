@@ -77,27 +77,60 @@
         <field name="issue_date" eval="(datetime.now() - relativedelta(days=10)).strftime('%Y-%m-%d')"/>
         <field name="state">issued</field>
     </record>
-    <record id="asset_demo_laptop_maintenance_1" model="asset.management.asset">
-        <field name="name">Maintenance Laptop 01</field>
-        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
-        <field name="serial_number">DEMO-MAINT-001</field>
-        <field name="inventory_number">INV-MAINT-001</field>
-        <field name="state">maintenance</field>
-        <field name="description">
-            Demo asset currently under maintenance.
-        </field>
-    </record>
 
-    <record id="asset_demo_laptop_maintenance_2" model="asset.management.asset">
-        <field name="name">Maintenance Laptop 02</field>
-        <field name="asset_type_id" ref="demo_asset_type_laptop"/>
-        <field name="serial_number">DEMO-MAINT-002</field>
-        <field name="inventory_number">INV-MAINT-002</field>
-        <field name="state">maintenance</field>
-        <field name="description">
-            Demo asset currently under maintenance.
-        </field>
-    </record>
+<record id="asset_demo_laptop_maintenance_1"
+                model="asset.management.asset">
+            <field name="name">Maintenance Laptop 01</field>
+            <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+            <field name="serial_number">DEMO-MAINT-001</field>
+            <field name="inventory_number">INV-MAINT-001</field>
+            <field name="state">maintenance</field>
+            <field name="description">
+                Demo asset currently under maintenance.
+            </field>
+        </record>
+        <record id="demo_message_1" model="mail.message">
+            <field name="model">asset.management.asset</field>
+            <field name="res_id" ref="asset_demo_laptop_maintenance_1"/>
+            <field name="body"><![CDATA[                <p>
+                    <strong>Transferred to maintenance.</strong>
+                </p>
+                <p>
+                    <strong>Reason:</strong> battery replacement is required.
+                </p>
+                <p>
+                    The laptop is temporarily unavailable for transfer to the employee.
+                </p>
+            </field>]]></field>
+            <field name="message_type">comment</field>
+            <field name="subtype_id" ref="mail.mt_comment"/>
+        </record>
+
+<record id="asset_demo_monitor_retired_1"
+                model="asset.management.asset">
+            <field name="name">Retired Monitor 03</field>
+            <field name="asset_type_id" ref="demo_asset_type_laptop"/>
+            <field name="serial_number">DEMO-M-004</field>
+            <field name="inventory_number">INV-M-004</field>
+            <field name="state">retired</field>
+            <field name="description">
+                Demo asset currently under maintenance.
+            </field>
+        </record>
+        <record id="demo_message_2" model="mail.message">
+            <field name="model">asset.management.asset</field>
+            <field name="res_id" ref="asset_demo_monitor_retired_1"/>
+            <field name="body"><![CDATA[                <p>
+                    <strong>Retired</strong>
+                </p>
+                <p>
+                    <strong>Reason:</strong> The monitor is broken.
+                </p>
+
+            </field>]]></field>
+            <field name="message_type">comment</field>
+            <field name="subtype_id" ref="mail.mt_comment"/>
+        </record>
 
     <record id="employee_demo_doris" model="hr.employee">
         <field name="name">Doris Demo</field>
