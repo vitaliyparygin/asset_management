@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models
-
+from odoo import api, fields, models
 
 class AssetManagementAssetType(models.Model):
     """Reference list of equipment types (Laptop, Monitor, Phone, Tool, ...).
@@ -24,7 +23,14 @@ class AssetManagementAssetType(models.Model):
     )
     description = fields.Text()
     active = fields.Boolean(default=True)
-    asset_count = fields.Integer(compute='_compute_asset_count')
+    asset_count = fields.Integer(
+        compute='_compute_asset_count',
+    )
+    asset_ids = fields.One2many(
+        'asset.management.asset',
+        'asset_type_id',
+        string='Assets',
+    )
 
     _sql_constraints = [
         (
@@ -39,12 +45,14 @@ class AssetManagementAssetType(models.Model):
         ),
     ]
 
+    @api.depends('asset_ids.active')
     def _compute_asset_count(self):
-        counts = self.env['asset.management.asset'].with_context(active_test=False)._read_group(
+        counts = self.env['asset.management.asset']._read_group(
             [('asset_type_id', 'in', self.ids)],
             ['asset_type_id'],
             ['__count'],
         )
         mapped = {asset_type.id: count for asset_type, count in counts}
+
         for asset_type in self:
             asset_type.asset_count = mapped.get(asset_type.id, 0)

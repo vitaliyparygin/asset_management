@@ -91,9 +91,29 @@ class AssetManagementIssue(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        for vals in vals_list:
+            asset_id = vals.get('asset_id')
+
+            if not asset_id:
+                continue
+
+            asset = self.env['asset.management.asset'].browse(asset_id)
+
+            if asset.exists() and asset.state != 'available':
+                raise ValidationError(_(
+                    'The asset "%(asset)s" is not available for issue. '
+                    'Current status: %(state)s.'
+                ) % {
+                                          'asset': asset.display_name,
+                                          'state': dict(
+                                              asset._fields['state'].selection
+                                          ).get(asset.state, asset.state),
+                                      })
+
         try:
             with self.env.cr.savepoint():
                 return super().create(vals_list)
+
         except IntegrityError as exc:
             if (
                     getattr(exc, 'diag', None)

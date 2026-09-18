@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, UserError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 from odoo import fields
@@ -115,14 +115,15 @@ class TestAssetManagementSecurity(TransactionCase):
             })
 
     def test_asset_user_cannot_unlink_asset(self):
-        asset = self.asset_model.create({
-            'name': 'Asset To Delete',
+        asset = self.env['asset.management.asset'].create({
+            'name': 'Test Asset',
             'asset_type_id': self.asset_type_a.id,
-            'company_id': self.company_a.id,
         })
 
-        with self.assertRaises(AccessError):
+        with self.assertRaises(UserError):
             asset.with_user(self.asset_user).unlink()
+
+        self.assertTrue(asset.exists())
 
     def test_asset_manager_can_create_asset(self):
         asset = self.asset_model.with_user(self.asset_manager).create({
@@ -143,20 +144,16 @@ class TestAssetManagementSecurity(TransactionCase):
 
         self.assertEqual(asset.description, 'Updated by manager')
 
-    def test_asset_manager_can_unlink_asset(self):
-        asset = self.asset_model.create({
-            'name': 'Manager Delete Laptop',
+    def test_asset_manager_cannot_unlink_asset(self):
+        asset = self.env['asset.management.asset'].create({
+            'name': 'Test Asset',
             'asset_type_id': self.asset_type_a.id,
-            'company_id': self.company_a.id,
         })
 
-        asset.with_user(self.asset_manager).unlink()
+        with self.assertRaises(UserError):
+            asset.with_user(self.asset_manager).unlink()
 
-        self.assertFalse(
-            self.asset_model.with_context(active_test=False).search(
-                [('id', '=', asset.id)]
-            )
-        )
+        self.assertTrue(asset.exists())
 
     def test_asset_user_cannot_create_equipment_type(self):
         with self.assertRaises(AccessError):

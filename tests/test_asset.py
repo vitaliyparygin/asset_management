@@ -173,20 +173,19 @@ class TestAssetManagementAsset(TransactionCase):
             )
 
     def test_asset_type_asset_count(self):
-        asset_1 = self._create_asset(name='Laptop 1')
-        asset_2 = self._create_asset(name='Laptop 2')
+        asset_1 = self.env['asset.management.asset'].create({
+            'name': 'Asset 1',
+            'asset_type_id': self.asset_type.id,
+        })
+        asset_2 = self.env['asset.management.asset'].create({
+            'name': 'Asset 2',
+            'asset_type_id': self.asset_type.id,
+        })
 
-        self.asset_type.invalidate_recordset(['asset_count'])
         self.assertEqual(self.asset_type.asset_count, 2)
 
-        asset_1.write({'active': False})
+        asset_2.write({'active': False})
 
-        self.asset_type.invalidate_recordset(['asset_count'])
-        self.assertEqual(self.asset_type.asset_count, 2)
-
-        asset_2.unlink()
-
-        self.asset_type.invalidate_recordset(['asset_count'])
         self.assertEqual(self.asset_type.asset_count, 1)
 
     def test_asset_type_archive(self):
