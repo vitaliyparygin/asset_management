@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 from psycopg2 import IntegrityError
 
 class AssetManagementIssue(models.Model):
@@ -83,6 +83,11 @@ class AssetManagementIssue(models.Model):
             'A record still marked as "Issued" cannot have a return date.',
         ),
     ]
+
+    def unlink(self):
+        raise UserError(
+            'Issue records cannot be deleted because they are part of the equipment history.'
+        )
 
     @api.model_create_multi
     def create(self, vals_list):

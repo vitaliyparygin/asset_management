@@ -2,7 +2,6 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
-
 class AssetManagementAsset(models.Model):
     """A single physical piece of company equipment.
 
@@ -93,6 +92,12 @@ class AssetManagementAsset(models.Model):
             'status is "Issued".',
         ),
     ]
+
+    def unlink(self):
+        raise UserError(
+            'Assets cannot be deleted. Archive the asset instead.'
+        )
+
 
     @api.depends('issue_date', 'state')
     def _compute_days_issued(self):

@@ -76,4 +76,8 @@ restart-all:
 
 
 # -------------------------------
+shell:
+	docker compose exec odoo odoo shell -c /etc/odoo/odoo.conf -d odoo18-dev
+
+
 
